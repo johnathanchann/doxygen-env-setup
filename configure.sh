@@ -23,3 +23,5 @@ git commit -m "Deploy updated documentation"
 echo "Pushing changes to gh-pages branch..."
 git push origin gh-pages --force
 
+done
+echo "Done"

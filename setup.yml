@@ -5,13 +5,12 @@ runs:
   using: "composite"
   steps:
     - name: Configure Git
-       run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: "Deploying to Github"
-       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       run:
-
-
+      env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: $GITHUB_ACTION_PATH/configure.sh
+      shell: bash
