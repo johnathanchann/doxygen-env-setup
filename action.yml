@@ -1,16 +1,21 @@
 name: Doxygen-auto-deployer
-description: Auto deploys updated doxyfile into github-pages
+description: Auto deploys updated Doxyfile into GitHub Pages
 author: Johnathan Chan
 runs:
   using: "composite"
   steps:
     - name: Configure Git
+      shell: bash
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-    - name: "Deploying to Github"
+    - name: Make script executable
+      run: chmod +x $GITHUB_ACTION_PATH/configure.sh
+      shell: bash
+
+    - name: Deploying to GitHub
       env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: $GITHUB_ACTION_PATH/configure.sh
       shell: bash
