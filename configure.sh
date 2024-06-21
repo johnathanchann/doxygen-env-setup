@@ -11,10 +11,9 @@ cp -r ../doc/html/* .
 
 echo "Adding changes..."
 git add .
-echo "Check if there's changes..."
 if git diff-index --quiet HEAD; then
-    echo "No changes to commit."
-    exit 0
+   echo "No changes to commit."
+   exit 0
 fi
 
 echo "Committing changes..."
@@ -22,6 +21,3 @@ git commit -m "Deploy updated documentation"
 
 echo "Pushing changes to gh-pages branch..."
 git push origin gh-pages --force
-
-done
-echo "Done"
