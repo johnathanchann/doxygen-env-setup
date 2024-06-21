@@ -1,6 +1,10 @@
 name: Doxygen-auto-deployer
 description: Auto deploys updated Doxyfile into GitHub Pages
 author: Johnathan Chan
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub Token'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -16,6 +20,6 @@ runs:
 
     - name: Deploying to GitHub
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
       run: $GITHUB_ACTION_PATH/configure.sh
       shell: bash
