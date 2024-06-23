@@ -21,5 +21,6 @@ runs:
     - name: Deploying to GitHub
       env:
         GITHUB_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
       run: $GITHUB_ACTION_PATH/configure.sh
       shell: bash
