@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 echo "Cloning the repository..."
-git clone https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} repo
+REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+git clone "${REPO_URL}" repo
 cd repo
 git checkout --orphan gh-pages
 git rm -rf .
