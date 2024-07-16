@@ -8,7 +8,7 @@ git checkout -b gh-pages
 find . -mindepth 1 -maxdepth 1 ! -name 'doc' -exec rm -rf {} +
 
 # Copy new documentation
-cp -r ../doc/html/* .
+cp -r ./doc/html/* .
 
 # Add and commit changes
 git add .
