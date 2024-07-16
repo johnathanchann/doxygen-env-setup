@@ -1,12 +1,8 @@
 #!/bin/bash
 set -e
 
-# Check if gh-pages branch exists
-if git show-ref --quiet refs/heads/gh-pages; then
-    git checkout gh-pages
-else
-    git checkout --orphan gh-pages
-fi
+# Checkout gh-pages
+git checkout -b gh-pages
 
 # Clean the directory
 git rm -rf . > /dev/null 2>&1
