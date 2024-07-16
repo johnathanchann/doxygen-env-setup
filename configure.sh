@@ -6,6 +6,9 @@ REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
 git clone "${REPO_URL}" repo
 cd repo
 
+echo "Initializing submodules..."
+git submodule --init --recursive
+
 # Check if gh-pages branch exists
 if git show-ref --quiet refs/heads/gh-pages; then
     git checkout gh-pages
