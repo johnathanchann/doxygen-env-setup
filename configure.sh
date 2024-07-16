@@ -5,7 +5,7 @@ set -e
 git checkout -b gh-pages
 
 # Clean the directory
-git rm -rf . > /dev/null 2>&1
+find . -mindepth 1 -maxdepth 1 ! -name 'doc' -exec rm -rf {} +
 
 # Copy new documentation
 cp -r ../doc/html/* .
