@@ -7,7 +7,7 @@ git clone "${REPO_URL}" repo
 cd repo
 
 echo "Initializing submodules..."
-git submodule --init --recursive
+git submodule init
 
 # Check if gh-pages branch exists
 if git show-ref --quiet refs/heads/gh-pages; then
