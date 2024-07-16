@@ -1,14 +1,23 @@
 #!/bin/bash
 set -e
 
-# Checkout gh-pages
-git checkout -b gh-pages
+echo "Cloning the repository..."
+REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+git clone "${REPO_URL}" repo
+cd repo
+
+# Check if gh-pages branch exists
+if git show-ref --quiet refs/heads/gh-pages; then
+    git checkout gh-pages
+else
+    git checkout --orphan gh-pages
+fi
 
 # Clean the directory
-find . -mindepth 1 -maxdepth 1 ! -name 'doc' -exec rm -rf {} +
+git rm -rf . > /dev/null 2>&1
 
 # Copy new documentation
-cp -r ./doc/html/* .
+cp -r ../doc/html/* .
 
 # Add and commit changes
 git add .
